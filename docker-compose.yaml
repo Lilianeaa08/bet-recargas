@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  mongodb:
+    build: ./mongo/
+    restart: always
+    ports:
+      - "27025:27017"
+    volumes:
+      - ./mongo/data:/data/db
+    networks:
+      - botrecargas
+  
+  flask:
+    depends_on: 
+      - mongodb
+    build: ./flask/
+    ports:
+      - "5171:5171"
+    restart: always
+    volumes:
+      - ./flask:/app
+    networks: 
+      - botrecargas
+    env_file: 
+      - ./config/.env
+
+networks:
+  botrecargas:

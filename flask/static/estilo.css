@@ -1,0 +1,249 @@
+/* Folha de Estilo da Página Bet Recargas */
+
+/*1. Formatação do Cabeçalho da Página */
+
+.atendimento {
+    color: #fff; 
+    font-size: 20px; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    margin-right: auto; 
+    margin-top: 9px;
+}
+
+.header-content {
+    display: flex; 
+    align-items: center; 
+    background-color: rgb(18, 52, 44); 
+    padding: 0px 20px; 
+    text-align: left;
+}
+
+.logo-container {
+    display: flex; 
+    align-items: center; 
+}
+
+.logo-container img {
+    width: 70px; 
+    height: auto; 
+    margin-right: 2px; 
+}
+
+.menu-icon {
+    cursor: pointer; 
+}
+
+.menu-icon i {
+    font-size: 24px; 
+    color: #fff; 
+}
+
+/* 2. Formatação do Corpo da Página */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 0; 
+    background-color: #f0f0f0;
+}
+
+#messages {
+    padding: 10px;
+    overflow-y: scroll;
+    background: #fff;
+    height: 380px;
+    width: 330px;
+    flex-direction:column;
+}
+
+.message {
+    margin-bottom: 10px;
+    clear: both;
+    overflow: hidden;
+}
+
+.bot-message .message-content {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 10px;
+    float: left;
+    font-family:lucida 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.bot-message .message-time {
+    font-size: 10px;
+    color: #777;
+    clear: both;
+    float: left;
+    margin-top: 5px;
+}
+
+.user-message .message-content {
+    background-color: rgba(18, 110, 81, 0.85); 
+    border-radius: 16px;
+    padding: 10px;
+    color: white;
+    float: right;
+    font-family:lucida 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    word-wrap: break-word;
+    max-width: 90%;
+}
+
+.user-message .message-time {
+    font-size: 10px;
+    color: #777;
+    clear: both;
+    float: right;
+    margin-top: 5px;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.bot-message .message-content,
+.user-message .message-content {
+    font-size: 12px; 
+}
+
+#chat-container {
+    position: relative;
+    width: 370px;
+    height: 430px;
+    margin: 10px auto 50px auto;
+    border-radius: 2px;
+    padding: 20px;
+    top: -10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: #12332C;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+}
+
+#user-input {
+    flex: 1; 
+    padding: 7px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    margin-right: 0.2px; 
+    outline: none;
+    min-width: 275px; 
+}
+
+.message-button {
+    width: 25px;
+    height: 25px;
+    border: none !important;
+    background: transparent;
+    cursor: pointer;
+    outline: none !important;
+}
+
+.message-button i {
+    font-size: 18px;
+    color: white;
+    outline: none; 
+}
+
+.input-container_cabecalho {
+    display: flex;
+    align-items: center;
+    background-color: #12332C;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    background-image: url('./img/bet.svg');
+    background-size: auto 100%; 
+    background-position: left; 
+    background-repeat: no-repeat; 
+}
+
+.message-button:hover i {
+    color: #ABD801;
+}
+
+.message-button-close {
+    position: absolute;
+    top: 26px; 
+    right: 25px; 
+    width: 30px;
+    height: 30px;
+    border: none !important;
+    background: transparent;
+    cursor: pointer;
+    outline: none !important;
+}
+
+.message-button-close i {
+    font-size: 18px;
+    color: white;
+    outline: none; 
+}
+
+.input-container_cabecalho {
+    display: flex;
+    align-items: center;
+    background-color: #12332C;
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    background-image: url('./img/bet.svg');
+    background-size: auto 100%; 
+    background-position: left; 
+    background-repeat: no-repeat; 
+}
+
+.message-button-close:hover i {
+    color: #FF852D;
+}
+
+/* 2.1 Formatação da barra de rolagem do chat */
+
+#messages::-webkit-scrollbar {
+    width: 3px; 
+    background-color: #fff; 
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background-color: hsla(24, 96%, 64%, 0.85);
+    border-radius: 2px; 
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+    background-color: hsla(24, 96%, 64%, 0.75);
+}
+
+#messages::-webkit-scrollbar-track {
+    background-color: #fff; 
+}
+
+/* 3. Formatação do Rodapé da Página */
+
+footer {
+    position: fixed; 
+    left: 0; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: #12342C; 
+    color: #fff; 
+    text-align: center; 
+    padding: 15px 0; 
+}
+
+.footer-content p {
+    margin: 0; 
+    font-size: 14px; 
+    font-style: italic;
+}
+
+

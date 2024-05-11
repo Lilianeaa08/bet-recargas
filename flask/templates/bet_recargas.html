@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo.css') }}">
+    <title>Atendimento</title>
+</head>
+<!-- Google tag (gtag.js) para uso do Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PPW3MNZRPG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PPW3MNZRPG');
+
+</script>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='./img/logo.svg') }}" alt="Logo da Sua Empresa Fictícia">
+            </div>
+            <div class="atendimento">
+                <p class="atendimento-text">Atendimento ao Cliente</p>
+            </div>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>   
+    <div id="chat-container">
+        <div class="input-container_cabecalho"></div>
+        <div id="messages">
+            <div div class="bot-message message">
+                <div class="message-content">
+                    {{ mensagem_bot | safe }}
+                </div>
+                <div class="message-time">
+                    {{ getCurrentTime() }}
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <form id="message-form">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem">
+                <button class="message-button" type="button" onclick="sendMessage()" title="Enviar Mensagem"><i class="fas fa-paper-plane"></i></button>
+            </form>
+            <button class="message-button-close" type="button" onclick="encerrarChat()" title="Encerrar Chat"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("user-input").addEventListener("keydown", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+        });
+
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            if (userInput.trim() === "") return;
+
+            addUserMessage(userInput);
+
+            fetch('/bot_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addBotMessage(data.response);
+            })
+            .catch(error => {
+                console.error('Erro ao enviar mensagem para o servidor:', error);
+            });
+
+            document.getElementById("user-input").value = "";
+        }
+
+        function addUserMessage(message) {
+            var messagesContainer = document.getElementById("messages");
+            var userMessage = document.createElement("div");
+            userMessage.classList.add("user-message", "message");
+            userMessage.innerHTML = `
+                <div class="message-content">
+                     ${message}
+                </div>
+                <div class="message-time">
+                    ${getCurrentTime()}
+                </div>
+            `;
+            messagesContainer.appendChild(userMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            var messagesContainer = document.getElementById("messages");
+            var botMessage = document.createElement("div");
+            botMessage.classList.add("bot-message", "message");
+            botMessage.innerHTML = `
+                <div class="message-content">
+                    Bety: ${message}
+                </div>
+                <div class="message-time">
+                    ${getCurrentTime()}
+                </div>
+            `;
+            messagesContainer.appendChild(botMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function getCurrentTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = (now.getMonth() + 1).toString().padStart(2, "0"); 
+            var day = now.getDate().toString().padStart(2, "0");
+            var hours = now.getHours().toString().padStart(2, "0");
+            var minutes = now.getMinutes().toString().padStart(2, "0");
+            return year + "/" + month + "/" + day + " " + hours + ":" + minutes;
+        }
+
+        function encerrarChat() {
+        var userMessages = document.querySelectorAll('.user-message .message-content');
+        var botMessages = document.querySelectorAll('.bot-message .message-content');
+        var chatHistory = { user: [], bot: [] };
+
+        userMessages.forEach(message => {
+            chatHistory.user.push(message.textContent.trim());
+        });
+
+        botMessages.forEach(message => {
+            chatHistory.bot.push(message.textContent.trim());
+        });
+
+        fetch('/encerrar_chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ chatHistory: chatHistory })
+        })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); 
+
+        var messagesContainer = document.getElementById("messages");
+        while (messagesContainer.firstChild) {
+            messagesContainer.removeChild(messagesContainer.firstChild);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao encerrar o chat:', error);
+    });
+}
+
+</script>
+<footer>
+    <div class="footer-content">
+        <p>{{ 2024}}.Todos os direitos reservados. &copy; Bet Recargas Mobilidade Elétrica Ltda. </p>
+    </div>
+</footer>
+</body>
+</html>
