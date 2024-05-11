@@ -45,7 +45,7 @@ Estarei disponibilizando a implementação do meu projeto no link abaixo. </p>
 > **Nota:** <p align="justify"> Lembre-se: A Bet Recargas é uma empresa de mobilidade elétrica, então pergunte sobre coisas que tem haver com a atividade da empresa como: pontos de recargas, dúvidas do aplicativo, estações de recargas etc.</p>
 
 
-[Atendimento Bet Recargas](https://encurtador.com.br/ktCET)
+[Atendimento Bet Recargas](https://encurtador.com.br/klqNT)
 
 
 ## Detalhes Técnicos
