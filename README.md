@@ -37,17 +37,6 @@ A Bety é capaz de se comunicar com cordialidade e se adequar ao contexto do usu
 **Potencial Aumento da Satisfação do Cliente:** <p align="justify">Com a personalização do atendimento e a simplificação de buscas, espera-se que os clientes consigam sanar suas dúvidas no Chat, gerando uma melhoria significativa na resolução de problemas e nos canais de atendimento.
 </p>
 
-## Experimentação
-<p align="justify">
-Falar de experiência personalizada, sem um produto factível é fácil. <br> Então que tal vivenciar a experiência do atendimento da Bety? 
-Estarei disponibilizando a implementação do meu projeto no link abaixo. </p>
-
-> **Nota:** <p align="justify"> Lembre-se: A Bet Recargas é uma empresa de mobilidade elétrica, então pergunte sobre coisas que tem haver com a atividade da empresa como: pontos de recargas, dúvidas do aplicativo, estações de recargas etc.</p>
-
-
-[Atendimento Bet Recargas](https://encurtador.com.br/klqNT)
-
-
 ## Detalhes Técnicos
 
 No repositório do projeto temos a visão de três pastas e um arquivo com extensão YAML:<br><br>
